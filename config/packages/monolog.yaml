@@ -1,0 +1,14 @@
+monolog:
+    channels: ["security", "doctrine"]  # Vous pouvez définir des canaux de log ici si nécessaire
+    handlers:
+        # Environnement de développement
+        main:
+            type: stream
+            path: '%kernel.logs_dir%/%kernel.environment%.log'
+            level: debug   # En mode debug, vous pouvez voir tous les logs
+            channels: ["!event", "!doctrine"]
+        
+        # Environnement de production
+        console:
+            type: console
+            channels: ["!event", "!doctrine"]

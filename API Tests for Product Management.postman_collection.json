@@ -1,0 +1,448 @@
+{
+	"info": {
+		"_postman_id": "7aec7cac-b17b-4699-9761-1a14f907c067",
+		"name": "API Tests for Product Management",
+		"description": "This collection contains tests for managing products, cart, and wishlist in the backend API.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "POST /api/token - Get JWT Token",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@admin.com\", \r\n    \"password\": \"admin\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/account/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"account",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products Management",
+			"item": [
+				{
+					"name": "GET /api/products - List all products",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDY2MTU4MjUsImV4cCI6MTc0NjYxOTQyNSwicm9sZXMiOlsiUk9MRV9BRE1JTiJdLCJ1c2VybmFtZSI6ImFkbWluQGFkbWluLmNvbSJ9.xm2msBeMn9uju_QoJbUiwr90xrJTR7uc585fyl5CTLxvn9x4APm90E8x-ZolpYzOCKokhSAbmjxNbxTKA8gH50EI07LiNWbK2dWdJzJBEO8LADfIJrnWMMtnCGUHTWqmGETYVE43abzByt5BfZCBD8C8TRMorhkCl7j-OamBHyKKvpEHEslT1FDfcFUiu2VVXCAlP-xGH2aONNtb34TscBXA-P69xObO025mQIVVudyLwU42sgXsQ2LFO_xexoQ9TjDcsoLADbxlMLsCEBmlrTPxEbyv-ucM2ozIoYWChvlUVaHpitVtq3YlhiM8hDHWPw7TfKq9ed8hi1PxHflJFw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/product - Get product by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDY2MTU4MjUsImV4cCI6MTc0NjYxOTQyNSwicm9sZXMiOlsiUk9MRV9BRE1JTiJdLCJ1c2VybmFtZSI6ImFkbWluQGFkbWluLmNvbSJ9.xm2msBeMn9uju_QoJbUiwr90xrJTR7uc585fyl5CTLxvn9x4APm90E8x-ZolpYzOCKokhSAbmjxNbxTKA8gH50EI07LiNWbK2dWdJzJBEO8LADfIJrnWMMtnCGUHTWqmGETYVE43abzByt5BfZCBD8C8TRMorhkCl7j-OamBHyKKvpEHEslT1FDfcFUiu2VVXCAlP-xGH2aONNtb34TscBXA-P69xObO025mQIVVudyLwU42sgXsQ2LFO_xexoQ9TjDcsoLADbxlMLsCEBmlrTPxEbyv-ucM2ozIoYWChvlUVaHpitVtq3YlhiM8hDHWPw7TfKq9ed8hi1PxHflJFw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/products/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /api/products - Create a new product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDY2MTU4MjUsImV4cCI6MTc0NjYxOTQyNSwicm9sZXMiOlsiUk9MRV9BRE1JTiJdLCJ1c2VybmFtZSI6ImFkbWluQGFkbWluLmNvbSJ9.xm2msBeMn9uju_QoJbUiwr90xrJTR7uc585fyl5CTLxvn9x4APm90E8x-ZolpYzOCKokhSAbmjxNbxTKA8gH50EI07LiNWbK2dWdJzJBEO8LADfIJrnWMMtnCGUHTWqmGETYVE43abzByt5BfZCBD8C8TRMorhkCl7j-OamBHyKKvpEHEslT1FDfcFUiu2VVXCAlP-xGH2aONNtb34TscBXA-P69xObO025mQIVVudyLwU42sgXsQ2LFO_xexoQ9TjDcsoLADbxlMLsCEBmlrTPxEbyv-ucM2ozIoYWChvlUVaHpitVtq3YlhiM8hDHWPw7TfKq9ed8hi1PxHflJFw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"P001\", \r\n    \"name\": \"Product 1\", \r\n    \"description\": \"Product description\", \r\n    \"image\": \"image_url\", \r\n    \"category\": \"Category 1\", \r\n    \"price\": 100, \r\n    \"quantity\": 10, \r\n    \"internalReference\": \"ref001\", \r\n    \"shellId\": 1, \r\n    \"inventoryStatus\": \"INSTOCK\", \r\n    \"rating\": 4, \r\n    \"createdAt\": 1630526123, \r\n    \"updatedAt\": 1630526123\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/products/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"products",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH /api/products - Update product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDY2MTU4MjUsImV4cCI6MTc0NjYxOTQyNSwicm9sZXMiOlsiUk9MRV9BRE1JTiJdLCJ1c2VybmFtZSI6ImFkbWluQGFkbWluLmNvbSJ9.xm2msBeMn9uju_QoJbUiwr90xrJTR7uc585fyl5CTLxvn9x4APm90E8x-ZolpYzOCKokhSAbmjxNbxTKA8gH50EI07LiNWbK2dWdJzJBEO8LADfIJrnWMMtnCGUHTWqmGETYVE43abzByt5BfZCBD8C8TRMorhkCl7j-OamBHyKKvpEHEslT1FDfcFUiu2VVXCAlP-xGH2aONNtb34TscBXA-P69xObO025mQIVVudyLwU42sgXsQ2LFO_xexoQ9TjDcsoLADbxlMLsCEBmlrTPxEbyv-ucM2ozIoYWChvlUVaHpitVtq3YlhiM8hDHWPw7TfKq9ed8hi1PxHflJFw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Product description modifié\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/products/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /api/products - Delete product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDY2MTU4MjUsImV4cCI6MTc0NjYxOTQyNSwicm9sZXMiOlsiUk9MRV9BRE1JTiJdLCJ1c2VybmFtZSI6ImFkbWluQGFkbWluLmNvbSJ9.xm2msBeMn9uju_QoJbUiwr90xrJTR7uc585fyl5CTLxvn9x4APm90E8x-ZolpYzOCKokhSAbmjxNbxTKA8gH50EI07LiNWbK2dWdJzJBEO8LADfIJrnWMMtnCGUHTWqmGETYVE43abzByt5BfZCBD8C8TRMorhkCl7j-OamBHyKKvpEHEslT1FDfcFUiu2VVXCAlP-xGH2aONNtb34TscBXA-P69xObO025mQIVVudyLwU42sgXsQ2LFO_xexoQ9TjDcsoLADbxlMLsCEBmlrTPxEbyv-ucM2ozIoYWChvlUVaHpitVtq3YlhiM8hDHWPw7TfKq9ed8hi1PxHflJFw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/products/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"products",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Wishlist Management",
+			"item": [
+				{
+					"name": "POST /api/wishlist/add - Add product to wishlist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDY1NDk4MTcsImV4cCI6MTc0NjU1MzQxNywicm9sZXMiOlsiUk9MRV9BRE1JTiJdLCJ1c2VybmFtZSI6IkFkbWluIFBSTyJ9.DsFlx9ejqoXHtJjSihgxr7QmFzCUPQccOr5QLDZqw6AC9pquttJXWlxWabgD4Jedx4xPG0iBOBj8iN3r88EGnHfAktL_G58sHUp-eIz-EIxynhDxh0XCGFHNN0z9c935xlEe9DLNBD176KWvTC6V1YcI_GGbVv1Chg0ePhqnKQRrpLRLcx1BRcUhMUgJY893Ohg5ZmFEZKb0f8sr2oVwukzEOj1_MsdaAqY2F7ekR51y4ph6MRQdaZ-v2IraqzCXcHtYfU1aOhfgTAtQxsuMoafIdIOgXsiqtQphiOv0-OyAC8HhYGx6hF3vuaudZBZcwaGy-pi_KFbnKGZ1tWf6FA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{JWT_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"product_id\": 1\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/wishlist/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"wishlist",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/wishlist - Get wishlist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDY1NDk4NTIsImV4cCI6MTc0NjU1MzQ1Miwicm9sZXMiOlsiUk9MRV9BRE1JTiJdLCJ1c2VybmFtZSI6IkFkbWluIFBSTyJ9.Sr3npXjeQ0YOVG_q78dgj5HRkBvZMv0m8Otc1v3uNluU6_NoyxN13XLsgWe4gAVY1JSgqexA8InzUGde2EhMsMK0-MFxhY0r04U_VoJ8qk9FQs8QtTnxGwi5ZhZinWMRNjt8MC8SN-BXfCAThXNLaBwjIBz9_A6Bpi0WTU9TmLe8UXK1lAR7NJ4xAs-c0pa6gCxdNND7tWiP5yDMDkACyfor-SUgd-kCNiSMus1GzEC9vu9I5HCDna-l_6ot5Q5p37Xxyzuql46A6I8ESXGQrVXWOnzeaWtnE6wY48quZoy78808nY58n3dXAQF5kFpZ71T_K_UjCu5j_p9RDBXtBg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDY1Mzc0NjgsImV4cCI6MTc0NjU0MTA2OCwicm9sZXMiOlsiUk9MRV9BRE1JTiJdLCJ1c2VybmFtZSI6IkFkbWluIFBSTyJ9.GrkpCVOEBKc6caK4YHgkuHhVn-Ef_INEr4hZZzh5XPmqTvaZbZsX1O8fUdTvxYbIxl_7M3CvhCG1EiGuQnYgvDwWqqo3rRMv7Il-16N6rRspHAdt5fmd74_ePF1rGsk9xQrm6mWqwOekVVu_97eIpOgCzEEeu4yeOs27rXTAgbJmtgelVAt433WEM4ztOaCSLSmh-ZyLtUpyHILcJxkBnhdip3azKwtN43q_kzkBXtYq5N2Yw7ha8YfZ8O3zKEuFGfVngxoxOEVMVDxTG9ptyCjJzoLVfrj9Hp-BNN-kIc9SuSnax0CVReUwF5WY-czwrMzEeXQNCFOYzRPZNfFERw"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/wishlist",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"wishlist"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart Management",
+			"item": [
+				{
+					"name": "POST /api/cart/add - Add product to cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDY2MTU4MjUsImV4cCI6MTc0NjYxOTQyNSwicm9sZXMiOlsiUk9MRV9BRE1JTiJdLCJ1c2VybmFtZSI6ImFkbWluQGFkbWluLmNvbSJ9.xm2msBeMn9uju_QoJbUiwr90xrJTR7uc585fyl5CTLxvn9x4APm90E8x-ZolpYzOCKokhSAbmjxNbxTKA8gH50EI07LiNWbK2dWdJzJBEO8LADfIJrnWMMtnCGUHTWqmGETYVE43abzByt5BfZCBD8C8TRMorhkCl7j-OamBHyKKvpEHEslT1FDfcFUiu2VVXCAlP-xGH2aONNtb34TscBXA-P69xObO025mQIVVudyLwU42sgXsQ2LFO_xexoQ9TjDcsoLADbxlMLsCEBmlrTPxEbyv-ucM2ozIoYWChvlUVaHpitVtq3YlhiM8hDHWPw7TfKq9ed8hi1PxHflJFw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{JWT_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"product_id\": 1,\r\n    \"quantity\": 1\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/cart/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"cart",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/cart - Get cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDY2MTU4MjUsImV4cCI6MTc0NjYxOTQyNSwicm9sZXMiOlsiUk9MRV9BRE1JTiJdLCJ1c2VybmFtZSI6ImFkbWluQGFkbWluLmNvbSJ9.xm2msBeMn9uju_QoJbUiwr90xrJTR7uc585fyl5CTLxvn9x4APm90E8x-ZolpYzOCKokhSAbmjxNbxTKA8gH50EI07LiNWbK2dWdJzJBEO8LADfIJrnWMMtnCGUHTWqmGETYVE43abzByt5BfZCBD8C8TRMorhkCl7j-OamBHyKKvpEHEslT1FDfcFUiu2VVXCAlP-xGH2aONNtb34TscBXA-P69xObO025mQIVVudyLwU42sgXsQ2LFO_xexoQ9TjDcsoLADbxlMLsCEBmlrTPxEbyv-ucM2ozIoYWChvlUVaHpitVtq3YlhiM8hDHWPw7TfKq9ed8hi1PxHflJFw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDY1Mzc0NjgsImV4cCI6MTc0NjU0MTA2OCwicm9sZXMiOlsiUk9MRV9BRE1JTiJdLCJ1c2VybmFtZSI6IkFkbWluIFBSTyJ9.GrkpCVOEBKc6caK4YHgkuHhVn-Ef_INEr4hZZzh5XPmqTvaZbZsX1O8fUdTvxYbIxl_7M3CvhCG1EiGuQnYgvDwWqqo3rRMv7Il-16N6rRspHAdt5fmd74_ePF1rGsk9xQrm6mWqwOekVVu_97eIpOgCzEEeu4yeOs27rXTAgbJmtgelVAt433WEM4ztOaCSLSmh-ZyLtUpyHILcJxkBnhdip3azKwtN43q_kzkBXtYq5N2Yw7ha8YfZ8O3zKEuFGfVngxoxOEVMVDxTG9ptyCjJzoLVfrj9Hp-BNN-kIc9SuSnax0CVReUwF5WY-czwrMzEeXQNCFOYzRPZNfFERw"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/cart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"cart"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@admin.com\", \r\n    \"username\": \"Admin PRO\", \r\n    \"firstname\": \"Admin Hamza\", \r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/account",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"account"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
